@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+     <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - animation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <body>
+     <div id="snow-container"></div>
+     <script src="snow.js"></script>
+  <!-- مشغل الصوت -->
+  <audio id="background-music" loop>
+    <source src="Dean Martin - Let It Snow (Lyrics).mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت
+  </audio>
+
+  <!-- زر أيقونة الموسيقى -->
+  <button id="music-toggle" class="music-button" title="تشغيل الموسيقى">
+    🎵
+  </button>
+
+  <div class="login-container">
+    <h1>Welcome back</h1>
+    <form>
+      <input type="text" placeholder="username" required>
+      <input type="password" placeholder="password" required>
+      <button type="submit">signup</button>
+    </form>
+    <div class="signup">
+      Don't have an account? <a href="#">Sign up now</a>
+    </div>
+  </div>
+
+  <style>
+    /* تصميم الزر */
+    .music-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 28px;
+      color: gray;
+      transition: color 0.3s;
+    }
+
+    /* حركة الأيقونة عند التشغيل */
+    .playing {
+      color: #4CAF50;
+      animation: bounce 0.6s infinite alternate;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+
+  <script>
+    const music = document.getElementById('background-music');
+    const toggleButton = document.getElementById('music-toggle');
+
+    toggleButton.addEventListener('click', () => {
+      if (music.paused) {
+        music.play();
+        toggleButton.classList.add('playing');
+      } else {
+        music.pause();
+        toggleButton.classList.remove('playing');
+      }
+    });
+
+  </script>
+</body>
+
+
+</html>
